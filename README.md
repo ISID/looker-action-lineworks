@@ -1,4 +1,4 @@
-// prettier-ignore
+
 # looker-action-lineworks
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ISID/looker-action-lineworks)
