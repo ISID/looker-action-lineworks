@@ -113,7 +113,7 @@ LINE WORKSの設定手順は以下となります。
 
 Herokuの設定手順は以下となります。
 
-#### 1. 以下の Deploy to Herokuボタンを押下　**★ 後でリンク貼り替え**
+#### 1. 以下の Deploy to Herokuボタンを押下
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ISID/looker-action-lineworks)
 

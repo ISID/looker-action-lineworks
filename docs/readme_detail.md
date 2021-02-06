@@ -1,21 +1,30 @@
+
+# looker-action-lineworks
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ISID/looker-action-lineworks)
+
 ## 目次
 
-1. [LINE WORKS 連携 Action 概要](#1-line-works-連携-action-概要)
-2. [LINE WORKS 連携 Action の利用前提条件](#2-line-works-連携-action-の利用前提条件)
+1. [LINE WORKS連携Action 概要](#1-line-works連携action概要)
+2. [LINE WORKS連携Action の利用前提条件](#2-line-works連携actionの利用前提条件)
 3. [ETL 処理サンプル](#3-etl-処理サンプル)
-4. [LINE WORKS の設定](#4-line-works-の設定)
-5. [Heroku デプロイ設定](#5-heroku-デプロイ設定)
-6. [Looker の設定](#6-looker-の設定)
-7. [LINE WORKS 連携 Action の利用方法](#7-line-works-連携-action-の利用方法)
-8. [免責事項](#8-免責事項)
+4. [LINE WORKSの設定](#3-line-worksの設定)
+5. [Herokuデプロイ設定](#4-herokuデプロイ設定)
+6. [Lookerの設定](#5-looker-の設定)
+7. [LINE WORKS連携Actionの利用方法](#6-line-works連携actionの利用方法)
+8. [免責事項](#7-免責事項)
 
-## 1. LINE WORKS 連携 Action 概要
+## 1. LINE WORKS連携Action概要
 
-#### 1. LINE WORKS 連携 Action で可能なこと
+#### 1. LINE WORKS連携Actionで可能なこと
 
-Looker の Explore 画面で抽出した LINE WORKS /LINE ユーザが紐付いたリストに対して LINE WORKS 連携 Action を実行することで、Action Form 画面で入力した任意テンプレートメッセージおよび LINE ユーザのリストを、Bot 経由で複数の LINE WORKS ユーザに送信することができます。
+LookerのExplore画面で抽出したLINE WORKS/LINEユーザが紐付いたリストに対してLINE WORKS連携Actionを実行することで、<br>
+ActionForm画面で入力した任意テンプレートメッセージ および LINEユーザのリストを<br>
+Bot経由で複数のLINE WORKSユーザに送信することができます。
 
-メッセージを受信した LINE WORKS ユーザは、[外部トーク連携](https://line.worksmobile.com/jp/blog/use-cases/line-external-user-talk/)済の LINE ユーザのリストに対して、任意テンプレートメッセージが入力された状態でトーク画面に遷移できます。LINE WORKS ユーザは任意テンプレートメッセージを加筆修正し、LINE ユーザにトーク送信することができます。
+メッセージを受信したLINE WORKS ユーザは、[外部トーク連携](https://line.worksmobile.com/jp/blog/use-cases/line-external-user-talk/)済のLINEユーザのリストに対して、<br>
+任意テンプレートメッセージが入力された状態でトーク画面に遷移できます。<br>
+LINE WORKSユーザは任意テンプレートメッセージを加筆修正し、LINEユーザにトーク送信することができます。
 
 **■ 操作フロー**
 
@@ -27,11 +36,11 @@ Looker の Explore 画面で抽出した LINE WORKS /LINE ユーザが紐付い�
 4. LINE WORKS の外部トーク連携機能および[URL スキーム機能](https://developers.worksmobile.com/jp/document/17?lang=ja)を用いて、LINE WORKS ユーザーと LINE ユーザーとのトーク画面に、b)LINE ユーザー向けテンプレートメッセージがデフォルト入力された状態で表示
 5. 必要に応じて LINE WORKS ユーザーがテンプレートメッセージを修正し、LINE ユーザーにトークを送信
 
-**■LINE WORKS 連携 Action を用いたフローイメージ図 （参考）**
+**■LINE WORKS連携Actionを用いたフローイメージ図 （参考）**
 
 操作フロー NO.3 以降のフローイメージが下図
 
-![LINEWORKS連携Actionフロー図](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/LINEWORKS%E9%80%A3%E6%90%BAAction%E3%83%95%E3%83%AD%E3%83%BC%E5%9B%B3.png)
+![LINE　WORKS連携Actionフロー図](https://github.com/ISID/looker-action-lineworks/blob/image/readme/LINEWORKS%E9%80%A3%E6%90%BAAction%E3%83%95%E3%83%AD%E3%83%BC%E5%9B%B3.png)
 
 **■ ユースケース**
 
@@ -58,7 +67,7 @@ LINE WORKS 連携 Action では No.3「**Action API を使用して、プライ�
 
 **■LINE WORKS 連携 Action のアーキテクチャ（参考）**
 
-![Looker_概要_02](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_%E6%A6%82%E8%A6%81_02.png)
+![Looker_概要_02](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_%E6%A6%82%E8%A6%81_02.png)
 
 - Action Hub サーバ
 
@@ -75,23 +84,24 @@ LINE WORKS では bot を通してメッセージを送信する場合、サー�
 
 後述する「LINE WORKS：管理コンソールでの設定準備」でも触れますが、今回は**ID 登録タイプ**を採用しています。
 
-![LINEWORKS_token関連](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/LINEWORKS_token%E9%96%A2%E9%80%A3.png)
+![LINEWORKS_token関連](https://github.com/ISID/looker-action-lineworks/blob/image/readme/LINEWORKS_token%E9%96%A2%E9%80%A3.png)
 
 引用：https://developers.worksmobile.com/jp/document/1002002?lang=ja
 
-## 2. LINE WORKS 連携 Action の利用前提条件
+## 2. LINE WORKS連携Actionの利用前提条件
 
-LINE WORKS 連携 Action を用いるために必要な、**LINE WORKS の API で取得したトークメッセージや ETL 処理は各ユーザにて準備・設定**して頂く前提となります。
+LINE WORKS連携Actionを用いるために必要な、**LINE WORKSのAPIで取得したトークメッセージやETL処理は各ユーザにて準備・設定**して頂く前提となります。
 
-また、Looker の Explore 画面で抽出した LINE WORKS /LINE ユーザが紐付いたリストに対して、Action Form 画面で入力した任意テンプレートメッセージおよび LINE ユーザのリストを送信する仕様のため、**LINE WORKS ユーザ情報と LINE ユーザ情報が紐づいた DWH 管理を各ユーザにて対応**して頂く前提となります。
+また、LookerのExplore 画面で抽出したLINE WORKS /LINEユーザが紐付いたリストに対して、<br>
+ActionForm画面で入力した任意テンプレートメッセージ および LINEユーザのリストを送信する仕様のため、<br>
+**LINE WORKSユーザ情報とLINEユーザ情報が紐づいたDWH管理を各ユーザにて対応**して頂く前提となります。
 
-上記含めた、LINE WORKS 連携 Action の利用前提条件は以下となります。
+上記含めた、LINE WORKS連携Actionの利用前提条件は以下となります。
 
-- LINE WORKS の API で取得したトークメッセージや ETL 処理は、各ユーザにて準備・設定して頂く
-- LINE WORKS ユーザ情報と LINE ユーザ情報が紐づいた DWH 管理を、各ユーザにて対応
-
-- LINEWORKS アカウントを作成済みであること（Sandbox 環境では組織連携 API 以外利用不可のため、本番アカウントが必要）
-- [LINE WORKS ユーザ・LINE ユーザ間でトーク可能](https://line.worksmobile.com/jp/blog/use-cases/line-external-user-talk/)とするため、**LINE ユーザー側から**友だちとして登録済であること
+- LINE WORKSのAPIで取得したトークメッセージやETL処理は、各ユーザにて準備・設定して頂く
+- LINE WORKSユーザ情報とLINEユーザ情報が紐づいたDWH管理を、各ユーザにて対応
+- LINE WORKSアカウントを作成済みであること（Sandbox環境では組織連携API以外利用不可のため、本番アカウントが必要）
+- [LINE WORKSユーザ・LINEユーザ間でトーク可能](https://line.worksmobile.com/jp/blog/use-cases/line-external-user-talk/)とするため、**LINEユーザ側から**友だちとして登録済であること
 
 ## 3. ETL 処理サンプル
 
@@ -109,7 +119,7 @@ LINE WORKS が提供している[監査データのダウンロード API](https
 
 ■LINE WORKS > Admin 画面の監査 > トーク画面
 
-![LINEWORKS_ETL処理01](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/LINEWORKS_ETL%E5%87%A6%E7%90%8601.png)
+![LINEWORKS_ETL処理01](https://github.com/ISID/looker-action-lineworks/blob/image/readme/LINEWORKS_ETL%E5%87%A6%E7%90%8601.png)
 
 #### 3.2. トークメッセージのデータ整形
 
@@ -160,7 +170,7 @@ LINE WORKS 連携 Action では、送信先リストと任意のテンプレー�
 
 ただしこの sql は、**Amazon Athena の DML：[Presto 0.172](https://prestodb.io/docs/0.172/index.html) と [Presto 0.217](https://prestodb.io/docs/0.217/index.html) に準拠した記載**のため、接続している DWH 環境に併せて書いてください。
 
-![LookML](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/LookML.png)
+![LookML](https://github.com/ISID/looker-action-lineworks/blob/image/readme/LookML.png)
 
 LookML で定義している dimension と、トークメッセージから抽出した各データの紐付けは以下となります。
 
@@ -191,7 +201,7 @@ LINE WORKS 連携 Action では、LINE WORKS Bot → LINE WORKS ユーザ → LI
 
 以下は LookML でフィルタ処理をしたサンプルとなります。
 
-![LookML02](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/LookML02.png)
+![LookML02](https://github.com/ISID/looker-action-lineworks/blob/image/readme/LookML02.png)
 
 #### 3.3. LINE WORKS 連携 Action 設定用準備
 
@@ -205,23 +215,23 @@ LINE WORKS 連携 Action では、LINE WORKS Bot → LINE WORKS ユーザ → LI
 
 ※`dimension: sender_name`は、LINE WORKS 連携 Action では利用しないマッピング項目のためコピー不要
 
-![Looker_Explore](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_Explore.png)
+![Looker_Explore](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_Explore.png)
 
 ## 4. LINE WORKS の設定
 
-LINE WORKS の設定手順は以下となります。
+LINE WORKSの設定手順は以下となります。
 
 #### 1. [LINE WORKS DevelopperConsole](https://developers.worksmobile.com/jp/?lang=ja)にログイン
 
-#### 2. API を以下手順で設定
+#### 2. APIを以下手順で設定
 
-1.  Server API Consumer Key 　を設定
+1.  Server API Consumer Keyを設定
 
 2.  発行ボタンを押下し、以下を設定
 
-3.  API 利用範囲で「トーク Bot（追加）」を選択
+3.  API利用範囲で「トーク Bot（追加）」を選択
 
-4.  Token 自動延長は「ON」を選択
+4.  Token自動延長は「ON」を選択
 
 5.  Server List(ID 登録タイプ) を設定
 
@@ -233,19 +243,20 @@ LINE WORKS の設定手順は以下となります。
 
 #### 3. BOT を作成
 
-1. LINEWORKS 上で受信する、「顧客リストメッセージ」の送信元＝ Bot として利用したい画像・Bot 名称 を設定
+1. LINE WORKS上で受信する、「顧客リストメッセージ」の送信元＝ Bot として利用したい画像・Bot 名称 を設定
 
-2. Bot ポリシーの「トークルームへの招待」はチェックをつけず有効化しない　※「チーム/グループ/1:N トークに招待不可」と表示されること
+2. Botポリシーの「トークルームへの招待」はチェックをつけず有効化しない　※「チーム/グループ/1:N トークに招待不可」と表示されること
 
-（参考）LINE WORKS 連携 Action で作成したトーク BOT では、メッセージ送信に以下 API を利用
 
-1.  メッセージ送信https://developers.worksmobile.com/jp/document/1005008?lang=ja
-2.  URL スキーマ（スマホのみ利用可）https://developers.worksmobile.com/jp/document/10017001?lang=ja
-3.  ボタンテンプレートhttps://developers.worksmobile.com/jp/document/100500804?lang=ja
+    （参考）LINE WORKS連携Actionで作成したトークBOTでは、メッセージ送信に以下APIを利用
 
-#### 4. Heroku でのデプロイ設定に用いる項目をコピー
+    1. メッセージ送信https://developers.worksmobile.com/jp/document/1005008?lang=ja
+    2. URLスキーマ（スマホのみ利用可）https://developers.worksmobile.com/jp/document/10017001?lang=ja
+    3. ボタンテンプレートhttps://developers.worksmobile.com/jp/document/100500804?lang=ja
 
-後続の Heroku でのデプロイ設定用に、以下をコピーして控えておく
+#### 4. Herokuデプロイ設定で用いる項目をコピー
+
+後続のHerokuデプロイ設定用に、以下をコピーして控えておく
 
 - API
 
@@ -257,19 +268,21 @@ LINE WORKS の設定手順は以下となります。
 - Bot
   - `Bot No.`- 管理画面からコピー
 
-## 5. Heroku デプロイ設定
 
-Heroku の設定手順は以下となります。
 
-#### 1. 以下の Deploy to Heroku ボタンを押下　**★ 後でリンク貼り替え**
+## 5. Herokuデプロイ設定
 
-![Deploy](https://www.herokucdn.com/deploy/button.png)
+Herokuの設定手順は以下となります。
 
-#### 2. 任意の App name を入力
+#### 1. 以下の Deploy to Herokuボタンを押下
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ISID/looker-action-lineworks)
+
+#### 2. 任意のApp nameを入力
 
 #### 3. 環境変数を入力しデプロイ実施
 
-LINE WORKS 管理画面でコピーした項目を、環境変数として以下入力し、Deploy app ボタンを押下しデプロイを実施
+LINE WORKS管理画面でコピーした項目を、環境変数として以下入力し、Deploy appボタンを押下しデプロイを実施
 
 - `LINEWORKS_API_ID` - LINE WOKS の管理画面で取得した[API ID]をペースト
 - `LINEWORKS_BOT_NO`- LINE WOKS の管理画面で取得した[Bot No.]をペースト
@@ -278,47 +291,59 @@ LINE WORKS 管理画面でコピーした項目を、環境変数として以下
 - `LINEWORKS_SERVER_ID` -LINE WOKS の管理画面で取得した Server List（ID 登録タイプ）の[認証キー]をペースト
 - `SECRET_TOKEN`- 自動生成されるため入力不要
 
-#### 4. 自動生成された Secret Token をコピー
+#### 4. 自動生成されたSecret Tokenをコピー
 
-デプロイ完了後、後続の Looker 画面設定用に、**自動生成された以下項目**を Heroku 画面上からコピーして控えておく
+デプロイ完了後、後続のLooker画面設定用に、**自動生成された以下項目**を Heroku 画面上からコピーして控えておく
 
 - `SECRET_TOKEN` - Looker からの接続制限をかける設計にしているため、Looker 管理画面で`Authorization Token`として入力が必要
 
-![Heroku_deploy_04](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_action_04.png)
+![Heroku_deploy_04](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_action_04.png)
+
+
+
 
 ## 6. Looker の設定
 
-Looker の設定手順は以下となります。
+Lookerの設定手順は以下となります。
 
-![Looker_action_05](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_action_05.png)
+#### 1. PrivateAction の追加
+
+1. Lookerにログインし、管理タブ > Action > AddActionHubボタンを押下してPrivateActionを追加
+2. Heroku でデプロイしたappのURL を`Action Hub URL`に入力
+3. Lookerからの接続制限を設定しているため初回入力時はアラートが表示されるが、Configure Authorizationボタンを押下
+4. herokuの環境変数にてコピーしておいた`SECRET_TOKEN` を、`Authorization Token`に入力し、Update Tokenボタンを押下
+
+![Looker_action_05](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_action_05.png)
 
 ---
 
 #### 2. Explore 画面のフィールドピッカー表示名称で紐付け
 
-LINE WORKS Bot から送付する LINE WORKS /LINE ユーザ送信先リストおよび任意テンプレートメッセージと、LINE WORKS ユーザから LINE ユーザ送信先リストへ送付する任意テンプレートメッセージを取得するため、以下 3 項目を Looker 側で紐付けを行う。
+LINE WORKS Botから送付するLINE WORKS/LINEユーザ送信先リストおよび任意テンプレートメッセージと、<br>
+LINE WORKSユーザからLINEユーザ送信先リストへ送付する任意テンプレートメッセージを取得するため、<br>
+以下3項目をLooker側で紐付けを行う。
 
 - LINE WORKS ID
-  - LINE WORKS Bot から LINE WORKS ユーザに、LINE ユーザ送信先リスト・LINE ユーザ向け任意テンプレートメッセージを送付する際に必要な項目
+  - LINE WORKS Bot からLINE WORKSユーザに、LINEユーザ送信先リスト・LINEユーザ向け任意テンプレートメッセージを送付する際に必要な項目
   - LINE WORKS ID（例：xxxxx@org） に該当する dimension が、Explore 画面：フィールドピッカーで表示されている名称をペースト
 - LINE ID
-  - LINE WORKS ユーザから LINE ユーザに、任意テンプレートメッセージを送付する際に必要な項目
+  - LINE WORKSユーザからLINEユーザに、任意テンプレートメッセージを送付する際に必要な項目
   - LINE ID（例：901000000011001） に該当する dimension が、Explore 画面：フィールドピッカーで表示されている名称をペースト
 - LINE NAME
-  - LINE WORKS Bot から LINE WORKS ユーザに、LINE ユーザ送信先リスト・LINE ユーザ向け任意テンプレートメッセージを送付する際に、[ボタンテンプレート](https://developers.worksmobile.com/jp/document/100500804?lang=ja)にて LINE ユーザ名称を表示する際に必要な項目
+  - LINE WORKS BotからLINE WORKSユーザに、LINEユーザ送信先リスト・LINEユーザ向け任意テンプレートメッセージを送付する際に、[ボタンテンプレート](https://developers.worksmobile.com/jp/document/100500804?lang=ja)にてLINEユーザ名称を表示する際に必要な項目
   - LINE NAME（例：山田太郎） に該当する dimension が、Explore 画面：フィールドピッカーで表示されている名称をペースト
 
-■Looker 管理画面
+■Looker管理画面
 
-![Looker管理画面_マッピング](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2_%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0.png)
+![Looker管理画面_マッピング](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2_%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0.png)
 
-#### 3. Looker の Explore 画面でクエリ発行
+#### 3. LookerのExplore画面でクエリ発行
 
-Looker 管理画面で`LINE WORKS ID` `LINE ID` `LINE NAME` に入力した Explore 入力表示画面名称が、**必ずクエリ結果に含まれるように、該当する dimension を Explore で選択**しクエリを発行。（その他項目は任意で追加しても OK）
+Looker管理画面で`LINE WORKS ID` `LINE ID` `LINE NAME` に入力したExplore入力表示画面名称が、**必ずクエリ結果に含まれるように、該当するdimensionをExploreで選択**しクエリを発行。（その他項目は任意で追加してもOK）
 
-以下は、Explore でクエリ発行し表出力した際のイメージ図。
+以下は、Exploreでクエリ発行し表出力した際のイメージ図。
 
-| LINEWORKS ID | LINE ID         | LINE ユーザ名 |
+| LINE WORKS ID | LINE ID         | LINE ユーザ名 |
 | :----------- | :-------------- | :------------ |
 | xxxxx@org    | 901000000011001 | 山田太郎      |
 | xxxxx@org    | 901000000011002 | 佐藤花子      |
@@ -327,48 +352,58 @@ Looker 管理画面で`LINE WORKS ID` `LINE ID` `LINE NAME` に入力した Expl
 | yyyyy@org    | 901000000011004 | 高橋雄一      |
 | zzzzz@org    | 901000000011001 | 山田太郎      |
 
-上記の場合、LINE WORKS 連携 Action では**LINE WORKS ID 単位**で、LINE WORKS /LINE ユーザ送信先リストおよび任意テンプレートメッセージを送信。
+上記の場合、LINE WORKS連携Actionでは**LINE WORKS ID単位**で、LINE WORKS/LINEユーザ送信先リストおよび任意テンプレートメッセージを送信。
 
-- xxxxx@org へ送付する、LINE ユーザリスト
+- xxxxx@org へ送付する、LINEユーザリスト
   - 山田太郎(901000000011001)、佐藤花子(901000000011002)、鈴木一郎（901000000011003）
-- yyyyy@org へ送付する、LINE ユーザリスト
+- yyyyy@org へ送付する、LINEユーザリスト
   - 山田太郎(901000000011001)、高橋雄一（901000000011004）
-- zzzzz@org へ送付する、LINE ユーザリスト
+- zzzzz@org へ送付する、LINEユーザリスト
   - 山田太郎(901000000011001)
+
+
+
 
 ## 7. LINE WORKS 連携 Action の利用方法
 
-LINE WORKS および Looker での設定完了後、LINE WORKS 連携 Action の主な利用方法は以下となります。
+LINE WORKSおよびLookerでの設定完了後、LINE WORKS連携Actionの主な利用方法は以下となります。
 
-#### Action フォーム画面で設定
+#### 1. Actionフォーム画面で設定
 
-1. 6 章の[3. Looker の Explore 画面でクエリ発行](#3lookerのexplore画面でクエリ発行)を行った Explore から「送信」ボタンを押下し、Action フォーム画面で LINE WORKS を選択
-2. LINE WORKS ユーザ向けのテンプレートメッセージ、LINE ユーザ向けのテンプレートメッセージをそれぞれ入力して送信（リアルタイム配信）
+1. 6 章の[3. Looker の Explore 画面でクエリ発行](#3-lookerのexplore画面でクエリ発行)を行った Exploreから「送信」ボタンを押下し、Actionフォーム画面でLINE WORKS を選択
+2. LINE WORKSユーザ向けのテンプレートメッセージ、LINEユーザ向けのテンプレートメッセージをそれぞれ入力して送信（リアルタイム配信）
 
-![Looker_ActionForm](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_ActionForm.png)
+![Looker_ActionForm](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_ActionForm.png)
 
-#### LINE WORKS 連携 Action の送信方法
+#### 2. LINE WORKS連携Actionの送信方法
 
-LINE WORKS 連携 Action では上記の「Explore 画面から即時送信」含め、Looker デフォルト機能を用いた以下配信が可能です。
+LINE WORKS連携Actionでは上記の「Explore 画面から即時送信」含め、Lookerデフォルト機能を用いた以下配信が可能です。
 
 - リアルタイム配信：
 
-  - Explore でクエリ発行した内容を、LINE WORKS Bot に即時配信することが可能です。営業に顧客向けメッセージを送信指示したい場合に素早くレコメンド送信できます。
+  - Exploreでクエリ発行した内容を、LINE WORKS Botに即時配信することが可能です。
+  - 例えば、以下のようなユースケースを想定しています。
+    - 営業に顧客向けメッセージを送信指示したい場合に素早くレコメンド送信できます。
 
-* スケジュール配信：
+- スケジュール配信：
 
-  - 指定した条件に合わせて、クエリ発行した内容を LINE WORKS Bot に配信可能です。スケジュール配信単位でテンプレートメッセージを保存できるため、指定条件を変えずにテンプレートメッセージだけを簡単に変更することができます。顧客の誕生月や最終訪問時から 1 ヶ月後など、蓄積データのステータスをトリガーに、スケジュール配信を設定することも可能です。予定しているデータを最も必要としている人に、適切な頻度・適切なメッセージで送信することで、商機損失を防ぎます。
+  - 指定した条件に合わせて、クエリ発行した内容をLINE WORKS Botに配信可能です。
+  - 例えば、以下のようなユースケースを想定しています。
+    - スケジュール配信単位でテンプレートメッセージを保存できるため、指定条件を変えずにテンプレートメッセージだけを簡単に変更することができます。
+    - 顧客の誕生月や最終訪問時から 1 ヶ月後など、蓄積データのステータスをトリガーに、スケジュール配信を設定することも可能です。
+    - 予定しているデータを最も必要としている人に、適切な頻度・適切なメッセージで送信することで、商機損失を防ぎます。
 
 - アラート通知：
 
-  - 指定した条件に合致した場合、クエリ発行した内容を LINE WORKS Bot に即時送信可能です。閾値を超過した際にメールアラートを設定すると、問題が発生したときでも顧客や現場ユーザへの連絡が簡単です。
+  - 指定した条件に合致した場合、クエリ発行した内容をLINE WORKS Botに即時送信可能です。
+  - 例えば、以下のようなユースケースを想定しています。
+    - 閾値を超過した際にメールアラートを設定すると、問題が発生したときでも顧客や現場ユーザへの連絡が簡単です。
+
 
 ## 8. 免責事項
 
-本 OSS の使用により問題が生じた場合 および 不具合に対する対応責任は負いません。
-
-また、本 Readme で記載している設定方法および画面ショットは、以下バージョンでの記載・添付となります。
-
+本 OSS の使用により問題が生じた場合 および 不具合に対する対応責任は負いません。<br>
+また、本 Readme で記載している設定方法および画面ショットは、以下バージョンでの記載・添付となります。<br>
 バージョンアップに伴う本 Readme の更新作業や、各製品・ツールのバージョンアップ後の動作稼働担保は行いません。
 
 ・LINE WORKS（iOS 版）：2.8.0
