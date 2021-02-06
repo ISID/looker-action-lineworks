@@ -1,7 +1,7 @@
 // prettier-ignore
 # looker-action-lineworks
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/KumakuraKoki/looker-action-lineworks)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ISID/looker-action-lineworks)
 
 ## 目次
 
@@ -27,7 +27,7 @@ LINE WORKSユーザは任意テンプレートメッセージを加筆修正し�
 
 **■LINE WORKS連携Actionを用いたフローイメージ図 （参考）**
 
-![LINE　WORKS連携Actionフロー図](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/LINEWORKS%E9%80%A3%E6%90%BAAction%E3%83%95%E3%83%AD%E3%83%BC%E5%9B%B3.png)
+![LINE　WORKS連携Actionフロー図](https://github.com/ISID/looker-action-lineworks/blob/image/readme/LINEWORKS%E9%80%A3%E6%90%BAAction%E3%83%95%E3%83%AD%E3%83%BC%E5%9B%B3.png)
 
 #### 2. LINE WORKS連携Actionのアーキテクチャ
 
@@ -35,7 +35,7 @@ Heroku(Heroku Button)で Action Hub サーバを構築しており、アーキ�
 
 ※詳細は弊社記載の[Qiita](https://qiita.com/kumakura/items/48d14b31fda4e8c46c0b)記事も参照下さい
 
-![Looker_概要_02](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_%E6%A6%82%E8%A6%81_02.png)
+![Looker_概要_02](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_%E6%A6%82%E8%A6%81_02.png)
 
 
 
@@ -115,7 +115,7 @@ Herokuの設定手順は以下となります。
 
 #### 1. 以下の Deploy to Herokuボタンを押下　**★ 後でリンク貼り替え**
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/KumakuraKoki/looker-action-lineworks)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ISID/looker-action-lineworks)
 
 #### 2. 任意のApp nameを入力
 
@@ -136,7 +136,7 @@ LINE WORKS管理画面でコピーした項目を、環境変数として以下�
 
 - `SECRET_TOKEN` - Looker からの接続制限をかける設計にしているため、Looker 管理画面で`Authorization Token`として入力が必要
 
-![Heroku_deploy_04](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_action_04.png)
+![Heroku_deploy_04](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_action_04.png)
 
 
 
@@ -152,7 +152,7 @@ Lookerの設定手順は以下となります。
 3. Lookerからの接続制限を設定しているため初回入力時はアラートが表示されるが、Configure Authorizationボタンを押下
 4. herokuの環境変数にてコピーしておいた`SECRET_TOKEN` を、`Authorization Token`に入力し、Update Tokenボタンを押下
 
-![Looker_action_05](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_action_05.png)
+![Looker_action_05](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_action_05.png)
 
 ---
 
@@ -174,7 +174,7 @@ LINE WORKSユーザからLINEユーザ送信先リストへ送付する任意テ
 
 ■Looker管理画面
 
-![Looker管理画面_マッピング](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2_%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0.png)
+![Looker管理画面_マッピング](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2_%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0.png)
 
 #### 3. LookerのExplore画面でクエリ発行
 
@@ -212,7 +212,7 @@ LINE WORKSおよびLookerでの設定完了後、LINE WORKS連携Actionの主な
 1. 6 章の[3. Looker の Explore 画面でクエリ発行](#3-lookerのexplore画面でクエリ発行)を行った Exploreから「送信」ボタンを押下し、Actionフォーム画面でLINE WORKS を選択
 2. LINE WORKSユーザ向けのテンプレートメッセージ、LINEユーザ向けのテンプレートメッセージをそれぞれ入力して送信（リアルタイム配信）
 
-![Looker_ActionForm](https://github.com/KumakuraKoki/looker-action-lineworks/blob/image/readme/Looker_ActionForm.png)
+![Looker_ActionForm](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_ActionForm.png)
 
 #### 2. LINE WORKS連携Actionの送信方法
 
