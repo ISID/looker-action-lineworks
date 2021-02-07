@@ -226,33 +226,28 @@ LINE WORKSの設定手順は以下となります。
 #### 2. APIを以下手順で設定
 
 1.  Server API Consumer Keyを設定
-
-2.  発行ボタンを押下し、以下を設定
-
-3.  API利用範囲で「トーク Bot（追加）」を選択
-
-4.  Token自動延長は「ON」を選択
-
-5.  Server List(ID 登録タイプ) を設定
-
-    1. 追加ボタンを押下し、任意サーバー名・紐付ける Server API Consumer Key を選択して設定
-
+    1. 発行ボタンを押下
+    2. API利用範囲で「 トークBot すべて」を選択
+    3. Token自動延長は「ON」を選択
+2.  Server List(ID 登録タイプ) を設定
+    1. 追加ボタンを押下し、任意サーバー名・1.で作成した「Server API Consumer Key」を選択して設定
     2. 認証キーを管理画面からダウンロード（.key ファイル内に記載）
-
-       ※認証キーは、ヘッダー・フッターの`-----BEGIN PRIVATE KEY-----`から`-----END PRIVATE KEY-----`も含めてコピーすること
 
 #### 3. BOT を作成
 
-1. LINE WORKS上で受信する、「顧客リストメッセージ」の送信元＝ Bot として利用したい画像・Bot 名称 を設定
+1. Bot として利用したい画像・Bot 名称 を設定
+
+    LINE WORKS上で受信する、「顧客リストメッセージ」の送信元となります
 
 2. Botポリシーの「トークルームへの招待」はチェックをつけず有効化しない　※「チーム/グループ/1:N トークに招待不可」と表示されること
-
 
     （参考）LINE WORKS連携Actionで作成したトークBOTでは、メッセージ送信に以下APIを利用
 
     1. メッセージ送信https://developers.worksmobile.com/jp/document/1005008?lang=ja
     2. URLスキーマ（スマホのみ利用可）https://developers.worksmobile.com/jp/document/10017001?lang=ja
     3. ボタンテンプレートhttps://developers.worksmobile.com/jp/document/100500804?lang=ja
+
+3. 登録したBotを公開。「サービス中」に設定
 
 #### 4. Herokuデプロイ設定で用いる項目をコピー
 
@@ -284,18 +279,25 @@ Herokuの設定手順は以下となります。
 
 LINE WORKS管理画面でコピーした項目を、環境変数として以下入力し、Deploy appボタンを押下しデプロイを実施
 
-- `LINEWORKS_API_ID` - LINE WOKS の管理画面で取得した[API ID]をペースト
-- `LINEWORKS_BOT_NO`- LINE WOKS の管理画面で取得した[Bot No.]をペースト
-- `LINEWORKS_CONSUMER_KEY`- LINE WOKS の管理画面で取得した ServerAPI ConsumerKey の[Key]をペースト
-- `LINEWORKS_SERVER_AUTH_KEY` - LINE WOKS の管理画面で取得した Server List（ID 登録タイプ）の[ID]をペースト
-- `LINEWORKS_SERVER_ID` -LINE WOKS の管理画面で取得した Server List（ID 登録タイプ）の[認証キー]をペースト
-- `SECRET_TOKEN`- 自動生成されるため入力不要
+- `LINEWORKS_API_ID` 
+    - LINE WOKS の管理画面で取得した[API ID]をペースト
+- `LINEWORKS_BOT_NO`
+    - LINE WOKS の管理画面で取得した[Bot No.]をペースト
+- `LINEWORKS_CONSUMER_KEY`
+    - LINE WOKS の管理画面で取得した ServerAPI ConsumerKey の[Key]をペースト
+- `LINEWORKS_SERVER_AUTH_KEY` 
+    - LINE WOKS の管理画面で取得した Server List（ID 登録タイプ）から[認証キー]をダウンロードし、`-----BEGIN PRIVATE KEY-----`から`-----END PRIVATE KEY-----`も含めてコピー
+- `LINEWORKS_SERVER_ID` 
+    - LINE WOKS の管理画面で取得した Server List（ID 登録タイプ）の[ID]をペースト
+- `SECRET_TOKEN`
+    - 自動生成されるため入力不要
 
 #### 4. 自動生成されたSecret Tokenをコピー
 
 デプロイ完了後、後続のLooker画面設定用に、**自動生成された以下項目**を Heroku 画面上からコピーして控えておく
 
-- `SECRET_TOKEN` - Looker からの接続制限をかける設計にしているため、Looker 管理画面で`Authorization Token`として入力が必要
+- `SECRET_TOKEN` 
+    - Looker からの接続制限をかける設計にしているため、Looker 管理画面で`Authorization Token`として入力が必要
 
 ![Heroku_deploy_04](https://github.com/ISID/looker-action-lineworks/blob/image/readme/Looker_action_04.png)
 
