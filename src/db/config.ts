@@ -8,5 +8,9 @@ const dbConfig: PostgresConnectionOptions = {
   synchronize: false,
   logging: false,
   entities: [lineworksAccessToken],
+  // if you use this code for produciton, revise it
+  ssl: {
+    "rejectUnauthorized": false,
+  },
 };
 export default dbConfig;
