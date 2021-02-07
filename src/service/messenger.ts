@@ -133,7 +133,8 @@ export class Messenger {
         this.token = await lineworksAccessTokenController.forceGetValidAccessToken();
         this.messagePush(member, customers, message);
       } else {
-        throw new Error(`メッセージ送信APIからエラーコード(${response.status})が返却されました。`);
+        const resBody = await response.json();
+        throw new Error(`メッセージ送信APIからエラーコード(${response.status})が返却されました。: ${resBody.message}`);
       }
     }
   };

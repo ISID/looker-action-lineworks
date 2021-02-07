@@ -198,14 +198,17 @@ describe('send message', () => {
       columns: true,
     });
 
-    mockFetch.mockReturnValue(Promise.resolve(new Response(null, { status: 400 })));
+    mockFetch.mockReturnValue(Promise.resolve(new Response(JSON.stringify({ status: 400,
+      message:"test"
+    }), { status: 400,
+    } )));
 
     let isSkip: boolean = false;
     parser.on('readable', async () => {
       if (!isSkip) {
         isSkip = true;
         await expect(testMessenger.sendMessages(column, message, parser)).rejects.toThrowError(
-          'メッセージ送信APIからエラーコード(400)が返却されました。'
+          'メッセージ送信APIからエラーコード(400)が返却されました。: test'
         );
         done();
       }
